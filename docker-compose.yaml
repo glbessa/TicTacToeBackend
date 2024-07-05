@@ -1,11 +1,16 @@
 version: '3.8'
 services:
-  api:
+  nginx:
     build:
-      context: .
+      context: nginx
       dockerfile: Dockerfile
     ports:
       - 8000:8000
-    environment:
-      - ENV_VARIABLE=value
     restart: unless-stopped
+  api:
+    build:
+      context: api
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - nginx
