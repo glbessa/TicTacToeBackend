@@ -12,5 +12,8 @@ services:
       context: api
       dockerfile: Dockerfile
     restart: unless-stopped
+    environment:
+      - HOST=${HOST}
+      - PORT=${PORT}
     depends_on:
       - nginx
