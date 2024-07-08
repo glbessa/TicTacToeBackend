@@ -2,7 +2,7 @@
 FROM nginx:latest
 
 # Copy the NGINX configuration file
-COPY default.conf /etc/nginx/default.conf
+COPY default.conf /etc/nginx/conf.d
 COPY ssl.conf /etc/nginx/ssl.conf
 COPY common.conf /etc/nginx/common.conf
 
