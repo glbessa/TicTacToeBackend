@@ -16,4 +16,4 @@ services:
       - HOST=${API_HOST}
       - PORT=${API_PORT}
     depends_on:
-      - reverse_proxy
+      - reverse-proxy
