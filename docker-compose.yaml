@@ -1,11 +1,11 @@
 version: '3.8'
 services:
-  nginx:
+  reverse-proxy:
     build:
-      context: nginx
+      context: reverse_proxy
       dockerfile: Dockerfile
     ports:
-      - 443:8000
+      - ${SERVER_PORT}:80
     restart: unless-stopped
   api:
     build:
@@ -13,7 +13,7 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     environment:
-      - HOST=${HOST}
-      - PORT=${PORT}
+      - HOST=${API_HOST}
+      - PORT=${API_PORT}
     depends_on:
-      - nginx
+      - reverse_proxy
